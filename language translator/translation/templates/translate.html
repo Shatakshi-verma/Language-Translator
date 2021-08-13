@@ -1,0 +1,119 @@
+{% load static %}
+<html>
+<head>
+    <title>Translator</title>
+    <link href="{% static 'css/styles.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/translate.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+        
+<nav>
+    <div class="logo">
+        <img src="{% static 'img/logo.jpg' %}" alt='logo' height=60px width=60px>
+        <h1 style="font-size: 20px;"> Salve </h1>
+    </div>
+    <div class="menu">
+        <a href="{% url 'home' %}" style="font: size 100px">Home</a>
+        <a href="{% url 'translate' %}">translate</a>
+        <a href="{% url 'about' %}">about us</a>
+        <a href="{% url 'contact' %}">contact</a>
+    </div>
+</nav>
+    <main>
+        <section>
+            <form method='POST' action="{% url 'script' %}">
+                {% csrf_token %}
+                <div class='select'>
+                  <select name="input" id="input_lan" class='select'>
+                      <option selected disabled ='true'>Translate from</option>
+                      <option value="en">English</option>
+                      <option value="hi">Hindi</option>
+                      <option value="fr">French</option>
+                      <option value="de">German</option>
+                      <option value="ja">Japanese</option>
+                      <option value="ko">Korean</option>
+                      <option value="ru">Russian</option>
+                      <option value="tr">Turkish</option>
+                      <option value="ta">Tamil</option>
+                      <option value="es">Spanish</option>
+                  </select>
+                  <select name="output" id="output_lan", class='select'>
+                      <option selected disabled ='true'>Translate to</option>
+                      <option value="en">English</option>
+                      <option value="hi">Hindi</option>
+                      <option value="fr">French</option>
+                      <option value="de">German</option>
+                      <option value="ja">Japanese</option>
+                      <option value="ko">Korean</option>
+                      <option value="ru">Russian</option>
+                      <option value="tr">Turkish</option>
+                      <option value="ta">Tamil</option>
+                      <option value="es">Spanish</option>
+                  </select>
+                  </div>
+                  <section>
+                  
+                      <button class="glow-on-hover" onclick="location.href='{% url 'script' %}'">Speak to Translate</button>
+                      {% if test %}
+  
+                      {{test}}
+  
+                      {% endif %}
+                  </section>
+              </form>
+        </section>
+    </main>
+</header>
+<footer class="footer">
+    <div class="container">
+        <div class="row">             
+            <div class="col-4 offset-1 col-sm-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'translate' %}">Translate</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-7 col-sm-5">
+                <h5>Our Address</h5>
+                <address>
+                  Indira Gandhi Delhi Technical<br>
+                  University for Women, New Delhi<br>
+                  INDIA<br>
+                  <i class="fa fa-phone fa-lg"></i>: +852 1234 5678<br>
+                  <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+                  <i class="fa fa-envelope fa-lg"></i>: 
+                  <a href="mailto:salve@translation.ac.in">salve@translation.ac.in</a>
+               </address>
+            </div>
+            <div class="col-12 col-sm-4 align-self-center">
+                <div class="text-center">
+                    <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                    <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                    <a class="btn btn-social-icon" href="mailto:salve@translation.ac.in"><i class="fa fa-envelope-o"></i></a>
+                </div>
+            </div>
+       </div>
+       <div class="row justify-content-center">             
+            <div class="col-auto">
+                <p>© Copyright 2020 Salve</p>
+            </div>
+       </div>
+    </div>
+</footer>
+</body>
+</html>
